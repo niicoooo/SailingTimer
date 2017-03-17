@@ -25,6 +25,7 @@ class InitView extends BaseView {
     	timer.start(method(:updateTime), 1000, true);
     	var modeLabel = View.findDrawableById("ModeLabel");
     	var offsetLabel = View.findDrawableById("OffsetTimerLabel");
+    	var timerLabel = View.findDrawableById("TimerLabel");
     	if(mode == MODE_PURSUIT) {
     		modeLabel.setText("Pursuit");
     		modeLabel.setColor(Gfx.COLOR_RED);
@@ -34,6 +35,9 @@ class InitView extends BaseView {
     		modeLabel.setColor(Gfx.COLOR_BLUE);
     		offsetLabel.setText("");
     	}
+		var min = timerInitValue / 60;
+		var sec = timerInitValue % 60;
+    	timerLabel.setText(Lang.format(FORMAT_TIMER, [min, sec.format(FORMAT_MIN_SEC)]));
     	Ui.requestUpdate();
     }
 

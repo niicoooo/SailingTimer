@@ -10,7 +10,7 @@ class TimerView extends BaseView {
 	var up = false;
 	var inOffset = false;
 	var started = false;
-	var seconds = 300;
+	var seconds = timerInitValue;
 
 	hidden var timer;
 	hidden var timeTimer;

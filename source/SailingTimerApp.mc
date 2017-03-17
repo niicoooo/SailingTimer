@@ -11,6 +11,7 @@ enum
 var timerView;
 var mode = MODE_STANDARD;
 var pursuitOffset = 0;
+var timerInitValue = 300;
 
 var initView;
 

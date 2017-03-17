@@ -5,7 +5,9 @@ using Toybox.Time as Time;
 class TimerOptionsDelegate extends Ui.MenuInputDelegate {
     function onMenuItem(item) {
         if(item == :timer_option_standard) {
-        	mode = MODE_STANDARD;
+			mode = MODE_STANDARD;
+			Ui.popView(Ui.SLIDE_LEFT);
+			Ui.pushView(new Rez.Menus.StandardOptions(), new StandartOptionsDelegate(), Ui.SLIDE_LEFT);
 		} else if(item == :timer_option_pursuit) {
 			mode = MODE_PURSUIT;
 			Ui.popView(Ui.SLIDE_LEFT);
@@ -41,4 +43,20 @@ class PursuitTimeDelegate extends Ui.NumberPickerDelegate {
     function onNumberPicked(value) {
         pursuitOffset = value.value();
     }
+}
+
+class StandartOptionsDelegate extends Ui.MenuInputDelegate {
+
+	hidden var initvalues = {
+		:standard_option_60 => 60,
+		:standard_option_120 => 120,
+		:standard_option_180 => 180,
+		:standard_option_240 => 240,
+		:standard_option_300 => 300,
+		:standard_option_360 => 360
+	};
+
+	function onMenuItem(item) {
+		timerInitValue = initvalues[item];
+	}
 }
